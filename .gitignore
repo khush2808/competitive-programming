@@ -1,0 +1,39 @@
+# Ignore .cph and .vscode folders
+.cph/
+.vscode/
+**/.cph/
+**/.vscode/
+
+# Ignore node_modules
+node_modules/
+
+# Ignore log files
+*.log
+
+# Ignore OS generated files
+.DS_Store
+Thumbs.db
+
+# Ignore compiled files
+*.class
+*.o
+*.out
+*.exe
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Ignore temporary files
+*.tmp
+*.swp
+*.swo
+*.bak
+*.old
+*.orig
+*.rej
+*.~*
+
+# Ignore IDE specific files
+.idea/
+*.iml
