@@ -178,7 +178,7 @@ void solve()
 		if(i>='0' and i<='9')num = true;
 		else if(num)ans2 =false;
 	}
-	if(ans1 == ans2)cn;
+	if(ans1 and ans2)cn;
 	else cy;
 
 
