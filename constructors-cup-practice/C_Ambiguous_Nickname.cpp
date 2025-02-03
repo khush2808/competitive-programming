@@ -25,12 +25,20 @@
 using namespace std;
 const int mod = 1e9 + 7;
 #ifndef ONLINE_JUDGE
+#define debugs(x) cerr << #x << " ";_print(x);cerr<< ' ';
+#define debug(x,y,z) debugs(x) debugs(y) debugs(z)
+#define debug(x,y) debugs(x ) debugs(y)
+#define debug(x,y,z,w) debugs(x) debugs(y) debugs(z) debugs(w)
 #define debug(x)     \
 	cerr << #x << " "; \
 	_print(x);         \
 	cerr << endl;
 #else
 #define debug(x)
+
+
+
+
 #endif
 
 void _print(long long t) { cerr << t; }
@@ -156,30 +164,41 @@ void solve()
 {
 	string s;
 	cin >> s;
+	int n  = s.size();
 	// o
 	bool ans1 = true,ans2 =1;
-	for (auto &i : s)
+	for (int i = 0;i<n;i++)
 	{
-		if (i == '0')
-			i == 'o';
+		if (s[i] == '0')
+			s[i] = 'O';
 	}
 	bool num = false;
 	for(auto i:s){
+		
 		if(i>='0' and i<='9')num = true;
-		else if(num)ans1 =false;
+		else if(num){ans1 =false;
+		break;}
+		
+
 	}
 	// 0
 	for (auto &i : s)
 	{
 		if (i == 'O')
-			i == '0';
+			i = '0';
 	}
+
+	num = false;
 	for(auto i:s){
+		
 		if(i>='0' and i<='9')num = true;
-		else if(num)ans2 =false;
+		else if(num){ans2 =false;
+
+		break;}
 	}
-	if(ans1 and ans2)cn;
-	else cy;
+	if(!ans1 or !ans2)cy;
+
+	else cn;
 
 
 }
