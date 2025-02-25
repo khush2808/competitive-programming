@@ -88,79 +88,24 @@ b>>=1;
 return ans;
 }
 void solve(){
-string s;
-cin>>s;
-int i = 0;
-int n = s.size();
-int  j = n-1;
-while(i<=j){
-	if(s[i]==s[j]){
-		i++,j--;
+int n;
+cin>>n;
+vector<int> arr(n);for(auto &i:arr)cin>>i;
+map<int,int> m;
+for(auto i:arr)m[i]++;
+bool flag = false;
+int cnt = 0;
+int cnt0 = m[0];
+m.erase(0);
+int ans = 0;
+for(auto [i,j]:m){
 
+	if(j&1){ans++;
 	}
-	else break;
-}
-int ogi = i,ogj = j;
-multiset<int> st1, st2;
+	cnt0+=j/2;
+	flag = true;}
 
-st2.insert(s[j--]);
-st1.insert(s[i++]);
-
-if(i>=j)cout<<0<<'\n';
-else {
-	int ans  ;
-	int curr = 1;
-	int same = 0;
-	//1
-	while(i<=j and !st1.empty() and !st2.empty() and s[i]!=s[j]){
-		if(s[i]==s[j])same++;
-		else same = 0;
-		if(st1.find(s[j])!=st1.end()){
-			st1.erase(st1.find(s[j]));
-		}
-		else {
-			st2.insert(s[j]);
-		}
-		if(st2.find(s[i])!=st2.end()){
-			st2.erase(st2.find(s[i]));
-		}
-		else {
-			st1.insert(s[i]);
-		}
-		i++,j--;
-		curr++;
-	}
-
-ans = curr+min((st1.size()+1)/2,(st2.size()+1)/2)-same;
-curr =1;
-same = 0;
-st1.clear();
-st2.clear();
-i = ogi;
-j = ogj;
-j--,i++;
-while(i<=j and !st1.empty() and !st2.empty() and s[i]!=s[j]){
-	if(s[i]==s[j])same++;
-	else same = 0;
-	if(st2.find(s[i])!=st2.end()){
-		st2.erase(st2.find(s[i]));
-	}
-	else {
-		st1.insert(s[i]);
-	}
-	if(st1.find(s[j])!=st1.end()){
-		st1.erase(st1.find(s[j]));
-	}
-	else {
-		st2.insert(s[j]);
-	}
-	i++,j--;
-	curr++;
-}
-int ans1 = curr+min((st1.size()+1)/2,(st2.size()+1)/2)-same;
-	cout<<min(ans1,ans)<<'\n';
-}
-
+cout<<max(1ll,ans+(int)(cnt0>=1))<<'\n';
 }
 signed main() {
 IOS

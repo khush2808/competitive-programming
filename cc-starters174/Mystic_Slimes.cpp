@@ -87,80 +87,42 @@ b>>=1;
 }
 return ans;
 }
+int f (vector<int> &arr,int l,int r){
+	if(l>r)return 0;
+	if(l==r)return arr[l];
+	
+}
+int f1(vector<int> &arr,int l,int r){
+
+}
 void solve(){
-string s;
-cin>>s;
-int i = 0;
-int n = s.size();
-int  j = n-1;
-while(i<=j){
-	if(s[i]==s[j]){
-		i++,j--;
+vin;
 
-	}
-	else break;
-}
-int ogi = i,ogj = j;
-multiset<int> st1, st2;
-
-st2.insert(s[j--]);
-st1.insert(s[i++]);
-
-if(i>=j)cout<<0<<'\n';
-else {
-	int ans  ;
-	int curr = 1;
-	int same = 0;
-	//1
-	while(i<=j and !st1.empty() and !st2.empty() and s[i]!=s[j]){
-		if(s[i]==s[j])same++;
-		else same = 0;
-		if(st1.find(s[j])!=st1.end()){
-			st1.erase(st1.find(s[j]));
+int maxa = 0;
+	int maxi = -1;
+	vector<int> indices ;
+	for(int i = 0;i<=n-1;i++){
+		if(arr[i]>maxa){
+			maxa = arr[i];
 		}
-		else {
-			st2.insert(s[j]);
+	}
+	for(int i = 0;i<n;i++){
+		if(arr[i]==maxa){
+			indices.push_back(i);
 		}
-		if(st2.find(s[i])!=st2.end()){
-			st2.erase(st2.find(s[i]));
+	}
+	int src =-1;
+	int ans =0;
+	for(int i =0;i<n;i++){
+		if(i==1){
+			ans= max(ans,arr[1]-arr[0]);
 		}
-		else {
-			st1.insert(s[i]);
+		if(i==n-2){
+ans =max(ans,arr[n-2]-arr[n-1]);
 		}
-		i++,j--;
-		curr++;
+		ans =max(ans,arr[i]);
 	}
-
-ans = curr+min((st1.size()+1)/2,(st2.size()+1)/2)-same;
-curr =1;
-same = 0;
-st1.clear();
-st2.clear();
-i = ogi;
-j = ogj;
-j--,i++;
-while(i<=j and !st1.empty() and !st2.empty() and s[i]!=s[j]){
-	if(s[i]==s[j])same++;
-	else same = 0;
-	if(st2.find(s[i])!=st2.end()){
-		st2.erase(st2.find(s[i]));
-	}
-	else {
-		st1.insert(s[i]);
-	}
-	if(st1.find(s[j])!=st1.end()){
-		st1.erase(st1.find(s[j]));
-	}
-	else {
-		st2.insert(s[j]);
-	}
-	i++,j--;
-	curr++;
-}
-int ans1 = curr+min((st1.size()+1)/2,(st2.size()+1)/2)-same;
-	cout<<min(ans1,ans)<<'\n';
-}
-
+	cout<<ans<<'\n';
 }
 signed main() {
 IOS

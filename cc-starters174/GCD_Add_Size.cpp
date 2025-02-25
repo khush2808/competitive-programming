@@ -88,79 +88,32 @@ b>>=1;
 return ans;
 }
 void solve(){
-string s;
-cin>>s;
-int i = 0;
-int n = s.size();
-int  j = n-1;
-while(i<=j){
-	if(s[i]==s[j]){
-		i++,j--;
-
+	int N;
+	cin >> N;
+	vector<int> A(N);
+	for (int i = 0; i < N; i++){
+			cin >> A[i];
 	}
-	else break;
-}
-int ogi = i,ogj = j;
-multiset<int> st1, st2;
-
-st2.insert(s[j--]);
-st1.insert(s[i++]);
-
-if(i>=j)cout<<0<<'\n';
-else {
-	int ans  ;
-	int curr = 1;
-	int same = 0;
-	//1
-	while(i<=j and !st1.empty() and !st2.empty() and s[i]!=s[j]){
-		if(s[i]==s[j])same++;
-		else same = 0;
-		if(st1.find(s[j])!=st1.end()){
-			st1.erase(st1.find(s[j]));
-		}
-		else {
-			st2.insert(s[j]);
-		}
-		if(st2.find(s[i])!=st2.end()){
-			st2.erase(st2.find(s[i]));
-		}
-		else {
-			st1.insert(s[i]);
-		}
-		i++,j--;
-		curr++;
+	
+	int ans = 0;
+	// Check candidate from single-element subsequences: f(B)=1+A[i]
+	for (int i = 0; i < N; i++){
+			ans = max(ans, A[i] + 1);
 	}
-
-ans = curr+min((st1.size()+1)/2,(st2.size()+1)/2)-same;
-curr =1;
-same = 0;
-st1.clear();
-st2.clear();
-i = ogi;
-j = ogj;
-j--,i++;
-while(i<=j and !st1.empty() and !st2.empty() and s[i]!=s[j]){
-	if(s[i]==s[j])same++;
-	else same = 0;
-	if(st2.find(s[i])!=st2.end()){
-		st2.erase(st2.find(s[i]));
+	
+	// Since A[i] is at most 1000 (as given), iterate over candidate divisors from 1 to 1000.
+	for (int d = 1; d <= 1000; d++){
+			int cnt = 0;
+			for (int i = 0; i < N; i++){
+					if (A[i] % d == 0){
+							cnt++;
+					}
+			}
+			if (cnt > 0){
+					ans = max(ans, cnt + d);
+			}
 	}
-	else {
-		st1.insert(s[i]);
-	}
-	if(st1.find(s[j])!=st1.end()){
-		st1.erase(st1.find(s[j]));
-	}
-	else {
-		st2.insert(s[j]);
-	}
-	i++,j--;
-	curr++;
-}
-int ans1 = curr+min((st1.size()+1)/2,(st2.size()+1)/2)-same;
-	cout<<min(ans1,ans)<<'\n';
-}
-
+	cout << ans << "\n";
 }
 signed main() {
 IOS
