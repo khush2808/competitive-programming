@@ -88,46 +88,12 @@ b>>=1;
 return ans;
 }
 void solve(){
-int n;
-cin>>n;
-string a,b;
-cin>>a>>b;
-int r = 0;
-int ans = 0;
-vector<tuple<int,int,int>> v;
-for(int i = 0,j=n-1;i<=j;i++,j--){
-	int a1 = a[i]^r;
-	int b1 = b[i];
-	int a2 = a[j]^r;
-	int b2 = b[j];
-	// debug(a1);
-	// debug(a2);
-	// debug(b1);
-	// debug(b2);
-	debug(i);
-	debug(j);
-	if(a1==b1 and a2==b2);
-	else {
-		ans++;
 
-	 if(a1!=b1 and a2!=b2) {
-		r^=1;
-		v.push_back({1,i+1,j+1});
-	}
-	 else if(a1==b1){
-		v.push_back({1,j+1,j+1});
-	
-	}
-	else if(a2==b2){	v.push_back({1,i+1,i+1});}}
-	
-}
-cout<<ans<<'\n';
-for(auto [i,j,k]:v)cout<<i<<' '<<j<<' '<<k<<'\n';
 }
 signed main() {
 IOS
 int t;
-cin>>t;
+t=1;
 while(t--){
 solve();
 }

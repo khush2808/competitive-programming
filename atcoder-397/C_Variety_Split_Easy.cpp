@@ -1,6 +1,5 @@
 #include<bits/stdc++.h>
 #include<functional>
-#define int ll
 #define ll long long
 #define pb push_back
 #define cy cout<<"YES"<<endl;
@@ -17,19 +16,14 @@
 #define IOS ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
 using namespace std;
 const int mod = 1e9+7;
-const int INF = 1e12;
 #ifndef ONLINE_JUDGE
-#define debugs(x) cerr << #x << " ";_print(x);cerr<< ' ';
-#define debug(x,y,z,w) debugs(x) debugs(y) debugs(z) debugs(w)
-#define debug(x,y,z) debugs(x) debugs(y) debugs(z)
-#define debug(x,y) debugs(x ) debugs(y)
-#define debug(x,y) debugs(x ) debugs(y)
 #define debug(x) cerr << #x <<" "; _print(x); cerr << endl;
 #else
 #define debug(x)
 #endif
 
 void _print(long long t) {cerr << t;}
+void _print(int t) {cerr << t;}
 void _print(string t) {cerr << t;}
 void _print(char t) {cerr << t;}
 void _print(long  double t) {cerr << t;}
@@ -88,46 +82,31 @@ b>>=1;
 return ans;
 }
 void solve(){
-int n;
-cin>>n;
-string a,b;
-cin>>a>>b;
-int r = 0;
-int ans = 0;
-vector<tuple<int,int,int>> v;
-for(int i = 0,j=n-1;i<=j;i++,j--){
-	int a1 = a[i]^r;
-	int b1 = b[i];
-	int a2 = a[j]^r;
-	int b2 = b[j];
-	// debug(a1);
-	// debug(a2);
-	// debug(b1);
-	// debug(b2);
-	debug(i);
-	debug(j);
-	if(a1==b1 and a2==b2);
-	else {
-		ans++;
-
-	 if(a1!=b1 and a2!=b2) {
-		r^=1;
-		v.push_back({1,i+1,j+1});
-	}
-	 else if(a1==b1){
-		v.push_back({1,j+1,j+1});
-	
-	}
-	else if(a2==b2){	v.push_back({1,i+1,i+1});}}
-	
+vin;
+vector<int> a(n+1),b(n+1);
+set<int> s;
+int it = 1;
+for(auto i:arr){
+	s.insert(i);
+	a[it++]=s.size();
 }
-cout<<ans<<'\n';
-for(auto [i,j,k]:v)cout<<i<<' '<<j<<' '<<k<<'\n';
+s.clear();
+for(int i = n-1;i>=0;i--){
+	s.insert(arr[i]);
+	b[i] = s.size();
+}
+int ans = 0;
+debug(a);
+debug(b);
+for(int i = 0;i<n-1;i++){
+	ans = max(ans,a[i]+b[i]);
+}
+cout<<ans;
 }
 signed main() {
 IOS
 int t;
-cin>>t;
+t=1;
 while(t--){
 solve();
 }
