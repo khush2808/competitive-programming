@@ -85,21 +85,36 @@ b>>=1;
 return ans;
 }
 void solve(){
-int n;cin>>n;
-vector<int> arr(n-2);
-for(auto &i:arr)cin>>i;
-bool flag = false;
-for(int i = 2;i<n-2;i++){
-if(arr[i-2]==1 and arr[i-1]==0 and arr[i]==1)flag = true;
+int n,k;
+cin>>n>>k;
+vector<vector<int>> arr(n,vector<int>(3));
+for(int i = 0;i<n;i++){
+    for(int j = 0;j<2;j++)cin>>arr[i][j];
+
 }
-if(flag)cn
-else cy;
+vector<vector<vector<int>>> dp(n,vector<vector<int>>(7,vector<int>(k+1,0)));
+dp[0][4]=arr[0][0]+arr[0][1];
+dp[0][5]=arr[0][1]+arr[0][2];
+
+for(int i = 1;i<n;i++){
+    //0
+    for(int i = 0;i<k;;i++)
+
+    //1.
+    //2.
+    //3.
+    //4..
+    //5..
+    //6 . .
+    //7...
+
+}
 
 }
 signed main() {
 IOS
 int t;
-cin>>t;
+t=1;
 while(t--){
 solve();
 }
