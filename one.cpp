@@ -212,7 +212,7 @@ int findMinCost(vector<int> eff)
 }
 signed main()
 {
-    IOS
-            cout
-        << findMinCost({2, 5, 10, 100, 101});
+   int arr[5]={1,2,3,4,5};
+   cout<<arr[6]<<'\n';
+   return 0;
 }
