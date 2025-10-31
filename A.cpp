@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 #include<functional>
-// #define int ll
+#define int ll
 #define ll long long
 #define pb push_back
 #define cy cout<<"YES"<<endl;
@@ -20,13 +20,10 @@ const int mod = 1e9+7;
 const int INF = 1e12;
 #ifndef ONLINE_JUDGE
 #define debugs(x) cerr << #x << " ";_print(x);cerr<< ' ';
-#define debug(x,y,z,w) debugs(x) debugs(y) debugs(z) debugs(w)
-#define debug(x,y,z) debugs(x) debugs(y) debugs(z)
-#define debug(x,y) debugs(x ) debugs(y)
-#define debug(x,y) debugs(x ) debugs(y)
 #define debug(x) cerr << #x <<" "; _print(x); cerr << endl;
 #else
 #define debug(x)
+#define debugs(x)
 #endif
 
 void _print(long long t) {cerr << t;}
@@ -50,24 +47,24 @@ template <class T, class V> void _print(map <T, V> v) {cerr << "[ "; for (auto i
 ll gcdExtended(ll a, ll b, ll* x, ll* y)
 {
 
-    if (a == 0) {
-        *x = 0, *y = 1;
-        return b;
-    }
+		if (a == 0) {
+				*x = 0, *y = 1;
+				return b;
+		}
 
-    ll x1, y1;
-    ll gcd = gcdExtended(b % a, a, &x1, &y1);
-    *x = y1 - (b / a) * x1;
-    *y = x1;
+		ll x1, y1;
+		ll gcd = gcdExtended(b % a, a, &x1, &y1);
+		*x = y1 - (b / a) * x1;
+		*y = x1;
 
-    return gcd;
+		return gcd;
 }
 ll modInverse(ll A, ll M) {
-    ll x, y;
-    ll g = gcdExtended(A, M, &x, &y);
-        ll res = (x % M + M) % M;
-       return res;
-    
+		ll x, y;
+		ll g = gcdExtended(A, M, &x, &y);
+				ll res = (x % M + M) % M;
+			 return res;
+		
 }
 ll bpow(ll a,ll b){
 ll ans =1;
@@ -79,7 +76,7 @@ b>>=1;
 return ans;
 }
 ll powmod(ll a,ll b){
-    ll ans =1;
+		ll ans =1;
 while(b){
 if(b&1)ans= (ans*a)%mod;
 a=(a*a)%mod;
@@ -87,24 +84,14 @@ b>>=1;
 }
 return ans;
 }
-
-
-/*
-0123 458769
-*/
-int getSortingFactor(vector<int> arr){
-    int n = arr.size();
-    int ans = -1;
-    for(int i = 0;i<arr.size();i++){
-        if(arr[i]!=i)ans&=i;
-    }
-    return ans==-1?0:ans;
-
-}
 void solve(){
-    cout<<getSortingFactor({0,1,3,2,4});
+
 }
 signed main() {
 IOS
+int t;
+cin>>t;
+while(t--){
 solve();
+}
 }
