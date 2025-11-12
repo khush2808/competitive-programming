@@ -1,1 +1,0 @@
-now I am an expert , so div 3 is unrated for me. starting contest at 9:45.
