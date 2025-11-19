@@ -1,1 +1,0 @@
-the questions was pretty simple .
