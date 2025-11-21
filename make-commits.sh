@@ -21,29 +21,27 @@ while read -r line && [ $count -lt $NUM_COMMITS ]; do
     # Handle deleted files
     if [[ "$status" =~ ^D ]]; then
         if git rm "$file" 2>/dev/null; then
-            git commit -m "Remove $file" && echo "Committed: $file (deleted)"
+            git commit -m "Remove $file"
             count=$((count + 1))
         fi
     # Handle untracked files/directories
     elif [[ "$status" =~ ^\?\? ]]; then
         if git add "$file" 2>/dev/null; then
-            git commit -m "Add $file" && echo "Committed: $file (new)"
+            git commit -m "Add $file"
             count=$((count + 1))
         fi
     # Handle modified files
     elif [[ "$status" =~ ^M ]]; then
         if git add "$file" 2>/dev/null; then
-            git commit -m "Update $file" && echo "Committed: $file (modified)"
+            git commit -m "Update $file"
             count=$((count + 1))
         fi
     # Handle other changes
     else
         if git add "$file" 2>/dev/null; then
-            git commit -m "Change $file" && echo "Committed: $file"
+            git commit -m "Change $file"
             count=$((count + 1))
         fi
     fi
 done < <(git status --porcelain)
 
-echo ""
-echo "Finished making $count commits"
