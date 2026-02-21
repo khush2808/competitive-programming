@@ -35,3 +35,4 @@ done
 echo "Finished making 7 commits for each changed file."
  
  
+ 
