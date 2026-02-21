@@ -33,3 +33,4 @@ for file in $changed_files; do
 done
 
 echo "Finished making 7 commits for each changed file."
+ 
